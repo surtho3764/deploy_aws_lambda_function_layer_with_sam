@@ -1,0 +1,31 @@
+AWSTemplateFormatVersion: "2010-09-09"
+Transform: AWS::Serverless-2016-10-31
+Description: Deploy Lambda hello_world hanlder function and Lambda Layer
+
+
+Globals:
+  Function:
+    Timeout: 100
+
+Parameters:
+  TableName:
+    Type: String
+    Default: "hello_world"
+
+
+Resources:
+  SideprojectHello:
+    Type: AWS::Serverless::Function
+    Properties:
+      CodeUri:
+      Handler:
+      Runtime: python3.7
+      FunctionName: app
+      Role:
+      Environment:
+        Variables:
+          table_name: !Ref TableName
+
+
+
+
